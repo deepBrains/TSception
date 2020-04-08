@@ -194,8 +194,8 @@ class TrainModel():
         save_path = Path(os.getcwd())
         if not os.path.exists(save_path / Path('Result_model/Leave_one_session_out/history')):
             os.makedirs(save_path / Path('Result_model/Leave_one_session_out/history'))
-        #Data dimention: subject x trials x segments x 1 x channel x data
-        #Label dimention: subject x trials x segments
+        #Data dimension: subject x trials x segments x 1 x channel x data
+        #Label dimension: subject x trials x segments
         #Session: trials[0:2]-session 1; trials[2:4]-session 2; trials[4:end]-session 3
         data = self.data
         label = self.label
@@ -243,7 +243,7 @@ class TrainModel():
                 data_test = torch.from_numpy(np.concatenate(data_test, axis = 0)).float()
                 label_test = torch.from_numpy(np.concatenate(label_test, axis = 0)).long()
                 
-                # Check the dimention of the training, validation and test set
+                # Check the dimension of the training, validation and test set
                 print('Training:', data_train.size(), label_train.size())
                 print('Validation:', data_val.size(), label_val.size())
                 print('Test:', data_test.size(), label_test.size())
@@ -325,8 +325,8 @@ class TrainModel():
                  Dimension : trials x segments
                  Type : np.array
         '''
-        #Data dimention: trials x segments x 1 x channel x data
-        #Label dimention: trials x segments
+        #Data dimension: trials x segments x 1 x channel x data
+        #Label dimension: trials x segments
         np.random.seed(0)
         data = np.concatenate(data, axis = 0)
         label = np.concatenate(label, axis = 0)
@@ -535,7 +535,7 @@ class TrainModel():
     
 if __name__ == "__main__":
     train = TrainModel()
-    train.load_data('D:\Code\clear\Data-preprocessing\CNN\Data_processed\data_splited.hdf')
+    train.load_data('D:\Code\CNN\Data_processed\data_split.hdf')
     # Please set the parameters here. You can also use for loops to select the parameters automatically,
     # if you have enough computation resources.
     train.set_parameter( cv = 'Leave_one_session_out',
