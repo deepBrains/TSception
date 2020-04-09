@@ -1,7 +1,7 @@
 # TSception
 This is the PyTorch implementation of the TSception in our paper:
 
-*Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Useing EEG", in IJCNN 2020*
+*Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Useing EEG", in IJCNN 2020, WCCI'20* available [here](https://arxiv.org/abs/2004.02965)
 # Requirement
 ```
 python == 3.6 and above
@@ -37,5 +37,5 @@ TSception can be divided into 3 main parts: temporal learner, spatial learner an
 # Cite
 Please cite our paper if you use our code in your own work:
 
-[*Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Useing EEG",in IJCNN 2020(accepted)*](https://arxiv.org/abs/2004.02965)
+[*Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Useing EEG",in IJCNN 2020, WCCI'20(accepted)*](https://arxiv.org/abs/2004.02965)
 
