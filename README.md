@@ -14,7 +14,7 @@ pathlib
 ```
 # Run the code
 > python train.py
-# Acknowladgement
+# Acknowledgment
 This code is double checked by Quihao Zeng.
 # EEG data
 Different from images, the EEG data can be treated as 2D time series, whose dimensions are channels (EEG electrodes) and time respectively, (Fig.1) The channels here are the EEG electrodes instead of RGB dimensions in image or the input/output channels for convolutional layers. Because the electrodes are located on different areas on the surface of human's head, the channel dimension contains spatial information of EEG; Time dimension is full of temporal information instead. In order to train a classifier, the EEG signal will be split into shorter time segments by a sliding window with certain overlap along time dimension. Each segment will be one input sample for the classifier.
