@@ -89,7 +89,8 @@ class Processer:
 
         
 if __name__ == "__main__":
-    Pro = Processer()  
+    Pro = Processer() 
+    # e.g. path = '/Users/mac/TSception/data'
     Pro.load_data(path='Your path of the data file',subject=2) 
     Pro.format_data()      
     Pro.split_data(segment_length = 4, overlap = 0.975, sampling_rate = 256, save = True)
