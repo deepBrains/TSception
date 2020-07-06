@@ -535,9 +535,8 @@ class TrainModel():
     
 if __name__ == "__main__":
     train = TrainModel()
-    train.load_data('D:\Code\CNN\Data_processed\data_split.hdf')
-    # Please set the parameters here. You can also use for loops to select the parameters automatically,
-    # if you have enough computation resources.
+    train.load_data('<Your code path>\data_split.hdf')
+    # Please set the parameters here. 
     train.set_parameter( cv = 'Leave_one_session_out',
                          model = 'TSception',
                          number_class = 2,
