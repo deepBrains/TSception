@@ -31,16 +31,6 @@ Different from images, the EEG data can be treated as 2D time series, whose dime
  Fig.1 EEG data. The hight is channel dimesion and the width is the time dimension.
 </p>
 
-# Pre-processing
-A band-pass filter from 0.3 to 45Hz is applied to remove low and high-frequency noise. 
-[ICA](https://mne.tools/0.15/auto_tutorials/plot_artifacts_correction_ica.html) is used to remove other noise (e.g. EOG). The ICA tool is provided by [MNE](https://mne.tools/stable/index.html).
-<p align="center">
-<img src="https://user-images.githubusercontent.com/58539144/86339542-4bb4c880-bc86-11ea-8090-0c35ee2640db.png" width=800 align=center>
-</p>
-<p align="center">
- Fig.2 Pre-processing of EEG data. A: The data after band-pass filter(0.3-45hz). B: The data after ICA noise removement. C: ICA components.
-</p>
-
 # Data to use
 There are 2 subjects' data available for researchers to run the code. Please find the data in the folder named 'data' in this repo. The data is cleared using the method above. The file is in '.hdf' format. To load the data, please use:
 > dataset = h5py.File('NAME.hdf','r')
