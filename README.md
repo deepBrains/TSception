@@ -32,7 +32,7 @@ Different from images, the EEG data can be treated as 2D time series, whose dime
 </p>
 
 # Data to use
-There are 2 subjects' data available for researchers to run the code. Please find the data in the folder named 'data' in this repo. The data is cleared using the method above. The file is in '.hdf' format. To load the data, please use:
+There are 2 subjects' data available for researchers to run the code. Please find the data in the folder named 'data' in this repo. The data is cleared by a band-pass filter(0.3-45) and [ICA (MNE)](https://mne.tools/stable/auto_tutorials/preprocessing/plot_40_artifact_correction_ica.html). The file is in '.hdf' format. To load the data, please use:
 > dataset = h5py.File('NAME.hdf','r')
 
 After loading, the keys are 'data' for data and 'label' for the label. The dimension of the data is (trials x channels x data). The dimension of the label is (trials x data). To use the data and label, please use:
