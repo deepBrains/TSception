@@ -62,7 +62,7 @@ TSception can be divided into 3 main parts: temporal learner, spatial learner an
 
 # Cite
 Please cite our paper if you use our code in your own work:
-
+```
 @INPROCEEDINGS{9206750,
   author={Y. {Ding} and N. {Robinson} and Q. {Zeng} and D. {Chen} and A. A. {Phyo Wai} and T. -S. {Lee} and C. {Guan}},
   booktitle={2020 International Joint Conference on Neural Networks (IJCNN)}, 
@@ -72,4 +72,4 @@ Please cite our paper if you use our code in your own work:
   number={},
   pages={1-7},
   doi={10.1109/IJCNN48605.2020.9206750}}
-
+```
