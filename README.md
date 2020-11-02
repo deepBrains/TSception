@@ -1,7 +1,7 @@
 # TSception
 This is the PyTorch implementation of the TSception in our paper:
 
-*Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Using EEG", in IJCNN 2020, WCCI'20* available [HERE](https://arxiv.org/abs/2004.02965)
+*Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Using EEG", in IJCNN 2020, WCCI'20* available [Arxiv](https://arxiv.org/abs/2004.02965)[IEEE Xplore](https://ieeexplore.ieee.org/document/9206750)
 
 It is an end-to-end deep learning framework to do classification from raw EEG signals. 
 # Requirement
@@ -63,5 +63,13 @@ TSception can be divided into 3 main parts: temporal learner, spatial learner an
 # Cite
 Please cite our paper if you use our code in your own work:
 
-[*Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Using EEG",in IJCNN 2020, WCCI'20(accepted)*](https://arxiv.org/abs/2004.02965)
+@INPROCEEDINGS{9206750,
+  author={Y. {Ding} and N. {Robinson} and Q. {Zeng} and D. {Chen} and A. A. {Phyo Wai} and T. -S. {Lee} and C. {Guan}},
+  booktitle={2020 International Joint Conference on Neural Networks (IJCNN)}, 
+  title={TSception:A Deep Learning Framework for Emotion Detection Using EEG}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={1-7},
+  doi={10.1109/IJCNN48605.2020.9206750}}
 
