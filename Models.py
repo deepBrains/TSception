@@ -49,8 +49,7 @@ class TSception(nn.Module):
             nn.Linear(size[1], hidden),
             nn.ReLU(),
             nn.Dropout(dropout_rate),
-            nn.Linear(hidden, num_classes),
-            nn.LogSoftmax(dim=1)
+            nn.Linear(hidden, num_classes)
         )
 
     def forward(self, x):
@@ -118,8 +117,7 @@ class Tception(nn.Module):
             nn.ReLU(),
             nn.Dropout(dropout_rate))
         self.fc2 = nn.Sequential(
-            nn.Linear(hiden, num_classes),
-            nn.LogSoftmax())
+            nn.Linear(hiden, num_classes))
         
     def forward(self, x):
         y = self.Tception1(x)
@@ -169,8 +167,7 @@ class Sception(nn.Module):
             nn.ReLU(),
             nn.Dropout(dropout_rate))
         self.fc2 = nn.Sequential(
-            nn.Linear(hiden, num_classes),
-            nn.LogSoftmax())
+            nn.Linear(hiden, num_classes))
         
     def forward(self, x):
         y = self.Sception1(x)
