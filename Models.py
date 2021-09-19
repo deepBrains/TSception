@@ -28,7 +28,7 @@ class TSception(nn.Module):
             nn.AvgPool2d(kernel_size=(1, pool), stride=(1, pool)))
 
     def __init__(self, num_classes, input_size, sampling_rate, num_T, num_S, hidden, dropout_rate):
-        # input_size: 1 x EEG channel x datapoint
+        # input_size: EEG channel x datapoint
         super(TSception, self).__init__()
         self.inception_window = [0.5, 0.25, 0.125]
         self.pool = 8
@@ -38,8 +38,8 @@ class TSception(nn.Module):
         self.Tception2 = self.conv_block(1, num_T, (1, int(self.inception_window[1] * sampling_rate)), 1, self.pool)
         self.Tception3 = self.conv_block(1, num_T, (1, int(self.inception_window[2] * sampling_rate)), 1, self.pool)
 
-        self.Sception1 = self.conv_block(num_T, num_S, (int(input_size[1]), 1), 1, int(self.pool*0.25))
-        self.Sception2 = self.conv_block(num_T, num_S, (int(input_size[1] * 0.5), 1), (int(input_size[1] * 0.5), 1),
+        self.Sception1 = self.conv_block(num_T, num_S, (int(input_size[-2]), 1), 1, int(self.pool*0.25))
+        self.Sception2 = self.conv_block(num_T, num_S, (int(input_size[-2] * 0.5), 1), (int(input_size[-2] * 0.5), 1),
                                          int(self.pool*0.25))
         self.BN_t = nn.BatchNorm2d(num_T)
         self.BN_s = nn.BatchNorm2d(num_S)
@@ -73,7 +73,7 @@ class TSception(nn.Module):
         # here we use an array with the shape being
         # (1(mini-batch),1(convolutional channel),EEG channel,time data point)
         # to simulate the input data and get the output size
-        data = torch.ones((1, input_size[0], input_size[1], int(input_size[2])))
+        data = torch.ones((1, 1, input_size[-2], int(input_size[-1])))
         y = self.Tception1(data)
         out = y
         y = self.Tception2(data)
