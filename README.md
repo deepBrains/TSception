@@ -4,6 +4,7 @@ This is the PyTorch implementation of the TSception in our paper:
 *Yi Ding, Neethu Robinson, Qiuhao Zeng, Dou Chen, Aung Aung Phyo Wai, Tih-Shih Lee, Cuntai Guan, "TSception: A Deep Learning Framework for Emotion Detection Using EEG", in IJCNN 2020, WCCI'20* available [Arxiv](https://arxiv.org/abs/2004.02965), [IEEE Xplore](https://ieeexplore.ieee.org/document/9206750)
 
 It is an end-to-end deep learning framework to do classification from raw EEG signals. 
+A [journal version](https://arxiv.org/abs/2104.02935) of TSception using DEAP dataset can be found at this [website](https://github.com/yi-ding-cs/TSception)
 # Requirement
 ```
 python == 3.6 and above
