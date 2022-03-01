@@ -90,7 +90,7 @@ class TSception(nn.Module):
         return out.size()
 ######################################### Temporal ########################################
 class Tception(nn.Module):
-    def __init__(self, num_classes, input_size, sampling_rate, num_T, hiden, dropout_rate):
+    def __init__(self, num_classes, input_size, sampling_rate, num_T, hidden, dropout_rate):
         # input_size: channel x datapoint
         super(Tception, self).__init__()
         self.inception_window = [0.5, 0.25, 0.125, 0.0625, 0.03125]
@@ -113,11 +113,11 @@ class Tception(nn.Module):
 
         size = self.get_size(input_size,sampling_rate,num_T)
         self.fc1 = nn.Sequential(
-            nn.Linear(size[1], hiden),
+            nn.Linear(size[1], hidden),
             nn.ReLU(),
             nn.Dropout(dropout_rate))
         self.fc2 = nn.Sequential(
-            nn.Linear(hiden, num_classes))
+            nn.Linear(hidden, num_classes))
         
     def forward(self, x):
         y = self.Tception1(x)
@@ -145,7 +145,7 @@ class Tception(nn.Module):
     
 ############################################ Spacial ########################################  
 class Sception(nn.Module):
-    def __init__(self, num_classes, input_size, sampling_rate, num_S, hiden, dropout_rate):
+    def __init__(self, num_classes, input_size, sampling_rate, num_S, hidden, dropout_rate):
         # input_size: channel x datapoint
         super(Sception, self).__init__()
         
@@ -163,11 +163,11 @@ class Sception(nn.Module):
         size = self.get_size(input_size)
         
         self.fc1 = nn.Sequential(
-            nn.Linear(size[1], hiden),
+            nn.Linear(size[1], hidden),
             nn.ReLU(),
             nn.Dropout(dropout_rate))
         self.fc2 = nn.Sequential(
-            nn.Linear(hiden, num_classes))
+            nn.Linear(hidden, num_classes))
         
     def forward(self, x):
         y = self.Sception1(x)
