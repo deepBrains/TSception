@@ -212,10 +212,11 @@ class TrainModel():
         #Train and evaluate the model subject by subject
         ACC = []
         ACC_mean = []
+        ACC_mean_val = []
         for i in range(subject):
             index = np.arange(trial)
             ACC_subject = []
-            ACC_session = []
+            ACC_subject_val = []
             for j in range(session):
                 # Split the data into training set and test set
                 # One session(contains 2 trials) is test set
@@ -249,13 +250,15 @@ class TrainModel():
                 print('Test:', data_test.size(), label_test.size())
 
                 # Get the accuracy of the model
-                ACC_session = self.train(data_train,label_train,
-                                         data_test,label_test,
-                                         data_val, label_val,
-                                         subject = i, session = j,
-                                         cv_type = "leave_one_session_out")
+                ACC_session, acc_val = self.train(
+                    data_train,label_train,
+                    data_test,label_test,
+                    data_val, label_val,
+                    subject = i, session = j,
+                    cv_type = "leave_one_session_out")
                 
                 ACC_subject.append(ACC_session)
+                ACC_subject_val.append(acc_val)
                 '''
                 # Log the results per session
                 
@@ -266,6 +269,9 @@ class TrainModel():
             ACC_subject = np.array(ACC_subject)
             mAcc = np.mean(ACC_subject)
             std = np.std(ACC_subject)
+
+            ACC_val = np.array(acc_val)
+            mAcc_val = np.mean(ACC_val)
             
             print("Subject:" + str(i) + "\nmACC: %.2f" % mAcc)
             print("std: %.2f" % std)
@@ -277,11 +283,13 @@ class TrainModel():
         
             ACC.append(ACC_subject)
             ACC_mean.append(mAcc)
+            ACC_mean_val.append(mAcc_val)
 
         self.result = ACC
         # Log the final Acc and std of all the subjects
         file = open("result_session.txt",'a')
-        file.write("\n"+ str(datetime.datetime.now()) +'\nMeanACC:'+ str(np.mean(ACC_mean)) + ' Std:' + str(np.std(ACC_mean)) + '\n')
+        file.write("\n"+ str(datetime.datetime.now()) +'\nMeanACC:'+ str(np.mean(ACC_mean)) +
+                   ' Std:' + str(np.std(ACC_mean)) + ' Mean Val ACC:'+ str(np.mean(ACC_mean_val)) + '\n')
         file.close()
         print("Mean ACC:" + str(np.mean(ACC_mean)) + ' Std:' + str(np.std(ACC_mean)))
 
@@ -530,12 +538,13 @@ class TrainModel():
             save_history['val_acc'] = Acc_val
             save_history['loss'] = losses
             save_history['val_loss'] = Loss_val
+            save_history['max_acc'] = acc_max
             save_history.close()
-        return Acc_test
+        return Acc_test, acc_max
     
 if __name__ == "__main__":
     train = TrainModel()
-    train.load_data('<Your code path>\data_split.hdf')
+    train.load_data('data_split.hdf')
     # Please set the parameters here. We also suggested to use T=S= 9+6 = 15 and hidden_node=32 when apply TSception to other dataset. 
     train.set_parameter( cv = 'Leave_one_session_out',
                          model = 'TSception',
