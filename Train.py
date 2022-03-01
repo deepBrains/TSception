@@ -35,7 +35,7 @@ class TrainModel():
         
         # Parameters: Model
         self.dropout = 0.3
-        self.hiden_node = 128
+        self.hidden_node = 128
         self.T = 9
         self.S = 6
         self.Lambda = 1e-6
@@ -66,7 +66,7 @@ class TrainModel():
         
     def set_parameter(self, cv, model, number_class, sampling_rate,
                       random_seed, learning_rate, epoch, batch_size,
-                      dropout, hiden_node, patient,
+                      dropout, hidden_node, patient,
                       num_T, num_S, Lambda):
         '''
         This is the function to set the parameters of training process and model
@@ -117,8 +117,8 @@ class TrainModel():
                    Type : float
                    Default : 0.3
 
-                hiden_node --
-                   The number of hiden node in the fully connected layer
+                hidden_node --
+                   The number of hidden node in the fully connected layer
                    Type : int
                    Default : 128
 
@@ -157,7 +157,7 @@ class TrainModel():
         
         # Parameters: Model
         self.dropout = dropout
-        self.hiden_node = hiden_node
+        self.hidden_node = hidden_node
         self.T = num_T
         self.S = num_S
 
@@ -175,7 +175,7 @@ class TrainModel():
               "\n3)learning_rate:" + str(self.learning_rate) + "\n4)num_epochs:" + str(self.num_epochs) +
               "\n5)batch_size:" + str(self.batch_size)+
               "\n6)dropout:" + str(self.dropout) + "\n7)sampling_rate:" + str(self.sampling_rate) +
-              "\n8)hiden_node:" + str(self.hiden_node) + "\n9)input_shape:" + str(self.input_shape) +
+              "\n8)hidden_node:" + str(self.hidden_node) + "\n9)input_shape:" + str(self.input_shape) +
               "\n10)patient:" + str(self.patient) + "\n11)T:" + str(self.T) + 
               "\n12)S:" + str(self.S) + "\n13)Lambda:" + str(self.Lambda) + '\n')
         
@@ -396,15 +396,15 @@ class TrainModel():
         if self.model == 'Sception':
             model = Sception(num_classes = self.num_class, input_size = self.input_shape,
                              sampling_rate = self.sampling_rate, num_S = self.S,
-                             hiden = self.hiden_node, dropout_rate = self.dropout)
+                             hidden = self.hidden_node, dropout_rate = self.dropout)
         elif self.model == 'Tception':
             model = Tception(num_classes = self.num_class, input_size = self.input_shape,
                              sampling_rate = self.sampling_rate, num_T = self.T,
-                             hiden = self.hiden_node, dropout_rate = self.dropout)
+                             hidden = self.hidden_node, dropout_rate = self.dropout)
         elif self.model == 'TSception':
             model = TSception(num_classes = self.num_class, input_size = self.input_shape,
                               sampling_rate = self.sampling_rate, num_T = self.T, num_S = self.S,
-                              hiden = self.hiden_node, dropout_rate = self.dropout)
+                              hidden = self.hidden_node, dropout_rate = self.dropout)
             
         optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
         
@@ -536,7 +536,7 @@ class TrainModel():
 if __name__ == "__main__":
     train = TrainModel()
     train.load_data('<Your code path>\data_split.hdf')
-    # Please set the parameters here. 
+    # Please set the parameters here. We also suggested to use T=S= 9+6 = 15 and hidden_node=32 when apply TSception to other dataset. 
     train.set_parameter( cv = 'Leave_one_session_out',
                          model = 'TSception',
                          number_class = 2,
@@ -546,7 +546,7 @@ if __name__ == "__main__":
                          epoch = 200,
                          batch_size = 128,
                          dropout = 0.3,
-                         hiden_node = 128,
+                         hidden_node = 128,
                          patient = 4,
                          num_T = 9,
                          num_S = 6,
