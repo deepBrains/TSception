@@ -61,6 +61,14 @@ TSception can be divided into 3 main parts: temporal learner, spatial learner an
  Fig.2 TSception structure
 </p>
 
+# CBCR License
+| Permissions | Limitations | Conditions |
+| :---         |     :---:      |          :---: |
+| :white_check_mark: Modification   | :x: Commercial use   | :warning: License and copyright notice   |
+| :white_check_mark: Distribution     |       |      |
+| :white_check_mark: Private use     |        |      |
+
+
 # Cite
 Please cite our paper if you use our code in your own work:
 ```
